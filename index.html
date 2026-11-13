@@ -18,38 +18,63 @@
 <!-- SCREEN 2: SCHOOL LUNCH MENU -->
 <section id="school-screen" class="screen hidden">
   <h2>School Lunch Menu</h2>
+  <!-- Opens the Future Menus Calendar screen -->
+<button class="calendar-link-btn" onclick="openCalendar('school-screen')">
+  Look at the menu of other days on the calendar!
+</button>
 
+<!-- Grid of School Lunch food cards with images and checkboxes -->
   <div class="menu-grid">
     <label class="menu-item">
-      <input type="checkbox" value="Mac & Cheese" onchange="updateOrder()">
-      <span>Mac & Cheese - $0.00</span>
+      <img src="images/mac-and-cheese.png" alt="Mac & Cheese" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Mac & Cheese" onchange="updateOrder()">
+        <span>Mac & Cheese - $0.00</span>
+      </div>
     </label>
 
     <label class="menu-item">
-      <input type="checkbox" value="Chicken Sandwich" onchange="updateOrder()">
-      <span>Chicken Sandwich - $0.00</span>
+      <img src="images/chicken-sandwich.png" alt="Chicken Sandwich" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Chicken Sandwich" onchange="updateOrder()">
+        <span>Chicken Sandwich - $0.00</span>
+      </div>
     </label>
 
     <label class="menu-item">
-      <input type="checkbox" value="Milk" onchange="updateOrder()">
-      <span>Milk - $0.00</span>
+      <img src="images/milk.png" alt="Milk" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Milk" onchange="updateOrder()">
+        <span>Milk - $0.00</span>
+      </div>
     </label>
 
     <label class="menu-item">
-      <input type="checkbox" value="Apple" onchange="updateOrder()">
-      <span>Apple - $0.00</span>
+      <img src="images/apple.png" alt="Apple" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Apple" onchange="updateOrder()">
+        <span>Apple - $0.00</span>
+      </div>
     </label>
 
     <label class="menu-item">
-      <input type="checkbox" value="Tangerine" onchange="updateOrder()">
-      <span>Tangerine - $0.00</span>
+      <img src="images/tangerine.png" alt="Tangerine" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Tangerine" onchange="updateOrder()">
+        <span>Tangerine - $0.00</span>
+      </div>
     </label>
 
     <label class="menu-item">
-      <input type="checkbox" value="Pizza" onchange="updateOrder()">
-      <span>Pizza - $0.00</span>
+      <img src="images/pizza.png" alt="Pizza" class="food-img">
+      <div class="menu-info">
+        <input type="checkbox" value="Pizza" onchange="updateOrder()">
+        <span>Pizza - $0.00</span>
+      </div>
     </label>
   </div>
+
+  
 
   <div class="order-review-box">
     <h3>Review your current order:</h3>
@@ -110,9 +135,19 @@
 <section id="confirmation-screen" class="screen hidden">
   <div class="redirect-box">
     <h2 id="thank-you-message">Thank you for placing your order!</h2>
+    <!-- Displays the confirmed pickup time -->
+    <p id="pickup-time-confirmation"></p>
     <div class="confirmation-buttons">
       <button class="cancel-btn" onclick="cancelOrder()">Cancel Order</button>
       <button class="primary-btn" onclick="resetAndGoHome()">Return to Home</button>
+      <!-- Opens the Future Menus Calendar screen -->
+<button class="back-btn" onclick="openCalendar('confirmation-screen')">
+  See Future Menus on the Calendar
+</button>
+      <!-- Opens the Current and Past Orders screen -->
+<button class="back-btn" onclick="openOrderStatus()">
+  See Current and Past Orders
+</button>
     </div>
   </div>
 </section>
@@ -122,6 +157,99 @@
   <div class="redirect-box">
     <h2>Order canceled</h2>
     <button class="back-btn" onclick="resetAndGoHome()">Back to Home</button>
+  </div>
+</section>
+
+<!-- SCREEN 5: FUTURE MENUS CALENDAR -->
+<section id="calendar-screen" class="screen hidden">
+  <div class="calendar-header">
+    <span class="year-badge">2026</span>
+    <h2>NOVEMBER</h2>
+  </div>
+
+  <!-- 7-column weekly grid matching the November 2026 Canva calendar -->
+  <div class="calendar-grid">
+    <div class="day-label">SUN</div>
+    <div class="day-label">MON</div>
+    <div class="day-label">TUE</div>
+    <div class="day-label">WED</div>
+    <div class="day-label">THU</div>
+    <div class="day-label">FRI</div>
+    <div class="day-label">SAT</div>
+
+    <!-- Week 1: Nov 1 - 7 -->
+    <div class="day-cell weekend">1</div>
+    <div class="day-cell"><strong>2</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>3</strong><br>Mac & Cheese</div>
+    <div class="day-cell"><strong>4</strong><br>Apples & Fruit</div>
+    <div class="day-cell"><strong>5</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>6</strong><br>Pizza</div>
+    <div class="day-cell weekend">7</div>
+
+    <!-- Week 2: Nov 8 - 14 -->
+    <div class="day-cell weekend">8</div>
+    <div class="day-cell"><strong>9</strong><br>Mac & Cheese</div>
+    <div class="day-cell"><strong>10</strong><br>Apples & Fruit</div>
+    <div class="day-cell"><strong>11</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>12</strong><br>Mac & Cheese</div>
+    <div class="day-cell"><strong>13</strong><br>Pizza</div>
+    <div class="day-cell weekend">14</div>
+
+    <!-- Week 3: Nov 15 - 21 -->
+    <div class="day-cell weekend">15</div>
+    <div class="day-cell"><strong>16</strong><br>Apples & Fruit</div>
+    <div class="day-cell"><strong>17</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>18</strong><br>Mac & Cheese</div>
+    <div class="day-cell"><strong>19</strong><br>Apples & Fruit</div>
+    <div class="day-cell"><strong>20</strong><br>Pizza</div>
+    <div class="day-cell weekend">21</div>
+
+    <!-- Week 4: Nov 22 - 28 -->
+    <div class="day-cell weekend">22</div>
+    <div class="day-cell"><strong>23</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>24</strong><br>Mac & Cheese</div>
+    <div class="day-cell"><strong>25</strong><br>Apples & Fruit</div>
+    <div class="day-cell"><strong>26</strong><br>Chicken Sandwich</div>
+    <div class="day-cell"><strong>27</strong><br>Pizza</div>
+    <div class="day-cell weekend">28</div>
+
+    <!-- Week 5: Nov 29 - 30 -->
+    <div class="day-cell weekend">29</div>
+    <div class="day-cell"><strong>30</strong><br>Mac & Cheese</div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+  </div>
+
+  <button class="back-btn" onclick="closeCalendar()">Back</button>
+</section>
+
+
+<!-- SCREEN 7: CURRENT & PAST ORDERS -->
+<section id="orders-screen" class="screen hidden">
+  <div class="order-status-card">
+    <h2>Your current order is <span class="status-highlight">Being prepared!</span></h2>
+    <p id="status-ready-time"><strong>It will be ready at 12:05 pm</strong></p>
+
+    <!-- Displays the items and payment method from the active order -->
+    <ul id="status-order-list"></ul>
+    <p id="status-payment-info"><strong>Total: $0.00 Paid for by Card</strong></p>
+  </div>
+
+  <div class="past-orders-card">
+    <h3>Past Orders:</h3>
+    <ul class="past-orders-list">
+      <li><strong>October 30th:</strong> You ordered Whopper &amp; 2 more items at Burger King</li>
+      <li><strong>October 27th:</strong> You ordered 2 cheese pizza slices &amp; 1 more item at Sun's Pizza</li>
+      <li><strong>October 26th:</strong> You ordered Mac &amp; Cheese &amp; 3 more items at School</li>
+    </ul>
+  </div>
+
+  <div class="menu-actions">
+    <button class="back-btn" onclick="showScreen('confirmation-screen')">Back to Confirmation</button>
+    <button class="primary-btn" onclick="resetAndGoHome()">Return to Home</button>
   </div>
 </section>
 

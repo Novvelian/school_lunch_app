@@ -69,8 +69,10 @@ function goToCheckout() {
 let customerName = "";
 
 // FUNCTION:
-// Saves the entered name and moves to the Confirmation screen.
+// Saves the entered name and pickup time, updates the confirmation screen, and displays it.
 function placeOrder() {
+  // VARIABLE:
+  // Reads the customer's name from the text input.
   let nameInput = document.getElementById("customer-name").value;
 
   if (nameInput === "") {
@@ -79,32 +81,21 @@ function placeOrder() {
     customerName = nameInput;
   }
 
-  showScreen("confirmation-screen");
-}
-
-
-
-// FUNCTION:
-// Saves the entered name, updates the thank-you message, and shows Confirmation.
-function placeOrder() {
-  let nameInput = document.getElementById("customer-name").value;
-
-  if (nameInput === "") {
-    customerName = "Friend";
-  } else {
-    customerName = nameInput;
-  }
-
+  // OUTPUT:
+  // Updates the thank-you heading with the customer's name.
   document.getElementById("thank-you-message").textContent =
     "Thank you for placing your order, " + customerName + "!";
 
-  showScreen("confirmation-screen");
-}
+  // VARIABLE:
+  // Reads the pickup time selected from the dropdown menu.
+  let selectedTime = document.getElementById("pickup-time").value;
 
-// FUNCTION:
-// Switches to the Order Canceled screen.
-function cancelOrder() {
-  showScreen("canceled-screen");
+  // OUTPUT:
+  // Displays the confirmed pickup time on the confirmation screen.
+  document.getElementById("pickup-time-confirmation").textContent =
+    "Your order will be ready at " + selectedTime + ".";
+
+  showScreen("confirmation-screen");
 }
 
 // FUNCTION:
@@ -121,4 +112,73 @@ function resetAndGoHome() {
   document.getElementById("customer-name").value = "";
   updateOrder();
   showScreen("home-screen");
+}
+
+
+
+// VARIABLE:
+  // Reads the pickup time selected from the dropdown menu.
+  let selectedTime = document.getElementById("pickup-time").value;
+
+  // OUTPUT:
+  // Displays the confirmed pickup time on the confirmation screen.
+  document.getElementById("pickup-time-confirmation").textContent =
+    "Your order will be ready at " + selectedTime + ".";
+
+
+
+
+
+
+  // VARIABLE:
+// Remembers which screen opened the calendar so "Back" returns there.
+let previousScreen = "school-screen";
+
+// FUNCTION:
+// Saves the screen the user came from and opens the Calendar screen.
+function openCalendar(fromScreen) {
+  previousScreen = fromScreen;
+  showScreen("calendar-screen");
+}
+
+// FUNCTION:
+// Returns the user to the screen they were on before opening the Calendar.
+function closeCalendar() {
+  showScreen(previousScreen);
+}
+
+
+
+
+
+// FUNCTION:
+// Populates the Current & Past Orders screen with the active order details and displays it.
+function openOrderStatus() {
+  // VARIABLE:
+  // Reads the selected pickup time and chosen payment radio button.
+  let selectedTime = document.getElementById("pickup-time").value;
+  let selectedPayment = document.querySelector("input[name='payment']:checked").value;
+
+  // OUTPUT:
+  // Updates the pickup time and payment method text on the status screen.
+  document.getElementById("status-ready-time").innerHTML =
+    "<strong>It will be ready at " + selectedTime + "</strong>";
+
+  document.getElementById("status-payment-info").innerHTML =
+    "<strong>Total: $0.00 Paid for by " + selectedPayment + "</strong>";
+
+  // OUTPUT:
+  // Lists each ordered food item on the status screen.
+  let statusList = document.getElementById("status-order-list");
+  statusList.innerHTML = "";
+
+  if (currentOrder.length === 0) {
+    statusList.innerHTML = "<li>No items selected.</li>";
+  } else {
+    for (let i = 0; i < currentOrder.length; i++) {
+      statusList.innerHTML += "<li>1x " + currentOrder[i] + " - $0.00</li>";
+    }
+  }
+
+  showScreen("orders-screen");
 }
