@@ -182,3 +182,12 @@ function openOrderStatus() {
 
   showScreen("orders-screen");
 }
+
+
+
+
+// FUNCTION:
+// Switches to the Order Canceled screen when the user clicks Cancel Order.
+function cancelOrder() {
+  showScreen("canceled-screen");
+}
