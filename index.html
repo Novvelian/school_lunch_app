@@ -1,1 +1,153 @@
+<body>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+
+<!-- SCREEN 1: HOME -->
+<section id="home-screen" class="screen">
+  <h1>Where would you like to go for lunch?</h1>
+  <div class="location-buttons">
+    <button onclick="showScreen('school-screen')">School Lunch</button>
+    <button onclick="showScreen('bk-screen')">Burger King</button>
+    <button onclick="showScreen('pizza-screen')">Sun's Pizza</button>
+    <button onclick="showScreen('other-screen')">Other</button>
+  </div>
+</section>
+
+<!-- SCREEN 2: SCHOOL LUNCH MENU -->
+<section id="school-screen" class="screen hidden">
+  <h2>School Lunch Menu</h2>
+
+  <div class="menu-grid">
+    <label class="menu-item">
+      <input type="checkbox" value="Mac & Cheese" onchange="updateOrder()">
+      <span>Mac & Cheese - $0.00</span>
+    </label>
+
+    <label class="menu-item">
+      <input type="checkbox" value="Chicken Sandwich" onchange="updateOrder()">
+      <span>Chicken Sandwich - $0.00</span>
+    </label>
+
+    <label class="menu-item">
+      <input type="checkbox" value="Milk" onchange="updateOrder()">
+      <span>Milk - $0.00</span>
+    </label>
+
+    <label class="menu-item">
+      <input type="checkbox" value="Apple" onchange="updateOrder()">
+      <span>Apple - $0.00</span>
+    </label>
+
+    <label class="menu-item">
+      <input type="checkbox" value="Tangerine" onchange="updateOrder()">
+      <span>Tangerine - $0.00</span>
+    </label>
+
+    <label class="menu-item">
+      <input type="checkbox" value="Pizza" onchange="updateOrder()">
+      <span>Pizza - $0.00</span>
+    </label>
+  </div>
+
+  <div class="order-review-box">
+    <h3>Review your current order:</h3>
+    <ul id="menu-order-list">
+      <li>No items selected yet.</li>
+    </ul>
+    <p><strong>Total: $0.00</strong></p>
+  </div>
+
+  <div class="menu-actions">
+    <button class="back-btn" onclick="showScreen('home-screen')">Back to Home</button>
+    <button class="primary-btn" onclick="goToCheckout()">Checkout</button>
+  </div>
+</section>
+
+<!-- SCREEN 3: CHECKOUT -->
+<section id="checkout-screen" class="screen hidden">
+  <h2>Checkout</h2>
+
+  <div class="order-review-box">
+    <h3>Review your current order:</h3>
+    <ul id="checkout-order-list"></ul>
+    <p><strong>Total: $0.00</strong></p>
+  </div>
+
+  <div class="checkout-form">
+    <label for="pickup-time"><strong>Select Pickup Time:</strong></label>
+    <select id="pickup-time">
+      <option value="11:30 am">11:30 am</option>
+      <option value="12:05 pm">12:05 pm</option>
+      <option value="12:30 pm">12:30 pm</option>
+      <option value="1:00 pm">1:00 pm</option>
+    </select>
+
+    <label for="customer-name"><strong>Enter Name:</strong></label>
+    <input type="text" id="customer-name" placeholder="Enter your name">
+
+    <p><strong>Select Payment Method:</strong></p>
+    <div class="payment-options">
+      <label><input type="radio" name="payment" value="Card" checked> Card</label>
+      <label><input type="radio" name="payment" value="Apple Pay"> Apple Pay</label>
+      <label><input type="radio" name="payment" value="Paypal"> Paypal</label>
+      <label><input type="radio" name="payment" value="Robux"> Robux</label>
+      <label><input type="radio" name="payment" value="Ethereum"> Ethereum</label>
+      <label><input type="radio" name="payment" value="Cash"> Cash</label>
+      <label><input type="radio" name="payment" value="Apple (the fruit) Pay"> Apple (the fruit) Pay</label>
+      <label><input type="radio" name="payment" value="Bartering"> Bartering</label>
+    </div>
+  </div>
+
+  <div class="menu-actions">
+    <button class="back-btn" onclick="showScreen('school-screen')">Back to Menu</button>
+    <button class="primary-btn" onclick="placeOrder()">Place order!</button>
+  </div>
+</section>
+
+<!-- SCREEN 4: ORDER CONFIRMATION -->
+<section id="confirmation-screen" class="screen hidden">
+  <div class="redirect-box">
+    <h2 id="thank-you-message">Thank you for placing your order!</h2>
+    <div class="confirmation-buttons">
+      <button class="cancel-btn" onclick="cancelOrder()">Cancel Order</button>
+      <button class="primary-btn" onclick="resetAndGoHome()">Return to Home</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 6: ORDER CANCELED -->
+<section id="canceled-screen" class="screen hidden">
+  <div class="redirect-box">
+    <h2>Order canceled</h2>
+    <button class="back-btn" onclick="resetAndGoHome()">Back to Home</button>
+  </div>
+</section>
+
+<!-- SCREEN 8: BURGER KING REDIRECT -->
+<section id="bk-screen" class="screen hidden">
+  <div class="redirect-box">
+    <h2>Redirecting you to the Burger King App...</h2>
+    <button class="back-btn" onclick="showScreen('home-screen')">Back to Home</button>
+  </div>
+</section>
+
+<!-- SCREEN 9: SUN'S PIZZA REDIRECT -->
+<section id="pizza-screen" class="screen hidden">
+  <div class="redirect-box">
+    <h2>Redirecting you to the Slice App...</h2>
+    <button class="back-btn" onclick="showScreen('home-screen')">Back to Home</button>
+  </div>
+</section>
+
+<!-- SCREEN 10: OTHER REDIRECT -->
+<section id="other-screen" class="screen hidden">
+  <div class="redirect-box">
+    <h2>Redirecting you to Google Maps...</h2>
+    <button class="back-btn" onclick="showScreen('home-screen')">Back to Home</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
